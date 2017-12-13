@@ -27,9 +27,9 @@ public class Application {
 		matrix.add(row2);
 		matrix.add(row3);
 		
-		PageRank pr = new PageRank(matrix, 3);
-		LinkedList<Data> solution = pr.calculateMatrixVector();
-		System.out.println(solution.toString());
+		PageRank pr = new PageRank(matrix, numURL);
+		//System.out.println(pr.calcSMVMultiplication().toString());
+		pr.calcPageRank();
 	}
 
 }
