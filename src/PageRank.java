@@ -35,9 +35,7 @@ public class PageRank {
 				}
 			}
 			// adjust rank BMR + (1-B)/N
-			sum = (beta * sum)  + ((1 - beta) / vector.size());
-			//System.out.println(beta + " * " + sum + " + " + "((" + 1 + " - " + beta + ")/ " + vector.size());
-			//System.out.println("rank adjustment: " + sum);			
+			sum = (beta * sum)  + ((1 - beta) / vector.size());			
 			
 			result.add(new Data(sum, i + 1, 1));
 		}
@@ -46,9 +44,9 @@ public class PageRank {
 		for(int x = 0; x < result.size(); x++) {
 			sum2 += result.get(x).getValue();
 		}			
-		//System.out.println("leak check: " + sum2);	
+		System.out.println("leak check: " + sum2);	
 		
-		if( sum2 < 1.0) {
+		if( sum2 - 0.5 < 1.0) {
 			double leak;
 			
 			leak = (1 - sum2) / result.size();
@@ -75,7 +73,6 @@ public class PageRank {
 				//calculate change
 				for(int i = 0; i < vector.size(); i++) {
 					error.get(i).setValue(Math.pow(previousVector.get(i).getValue() - vector.get(i).getValue(), 2));
-					//error.get(i).setValue(Math.abs(previousVector.get(i).getValue() - vector.get(i).getValue()));
 				}
 				
 				for(int j = 0; j < error.size(); j++) {					
