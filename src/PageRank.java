@@ -35,7 +35,7 @@ public class PageRank {
 				}
 			}
 			// adjust rank BMR + (1-B)/N
-			sum = (beta * sum)  + ((1 - beta) / vector.size());			
+			//sum = (beta * sum)  + ((1 - beta) / vector.size());			
 			
 			result.add(new Data(sum, i + 1, 1));
 		}
@@ -43,10 +43,9 @@ public class PageRank {
 		//check for leaks
 		for(int x = 0; x < result.size(); x++) {
 			sum2 += result.get(x).getValue();
-		}			
-		System.out.println("leak check: " + sum2);	
+		}	
 		
-		if( sum2 - 0.5 < 1.0) {
+		if( sum2 < 1.0) {
 			double leak;
 			
 			leak = (1 - sum2) / result.size();

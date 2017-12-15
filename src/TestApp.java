@@ -5,7 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-public class Application {
+public class TestApp {
 
 	public static void main(String[] args) {
 		LinkedList<Data> row1 = new LinkedList<Data>();
@@ -33,8 +33,8 @@ public class Application {
 		matrix.add(row3);
 		
 		PageRank pr = new PageRank(matrix, numURL);
-		System.out.println(pr.calcSMVMultiplication().toString());
-		//pr.calcPageRank();
+		//System.out.println(pr.calcSMVMultiplication().toString());
+		pr.calcPageRank();
 		
 		WebCrawler wc = new WebCrawler();
 		//wc.getPageLinks("http://localhost/WebCrawlTest/PageA.html");
