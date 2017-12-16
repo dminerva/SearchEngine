@@ -36,15 +36,25 @@ public class TestApp {
 		//System.out.println(pr.calcSMVMultiplication().toString());
 		//pr.calcPageRank();
 		
+		DatabaseManager dm = new DatabaseManager();
+		//dm.insert("test insert1", "test insert 2");
+		//dm.selectAll();
+		//dm.delete();
+		//System.out.println(dm.getURLs().toString());
+		//System.out.println("number of urls: " + dm.getURLs().size());
+		//System.out.println(dm.getPointingData("http://localhost/WebCrawlTest/PageA.html").toString());
+		
 		WebCrawler wc = new WebCrawler();
 		//wc.getPageLinks("http://localhost/WebCrawlTest/PageA.html");
 		//wc.crawlWeb("http://localhost/WebCrawlTest/PageA.html");
 		//wc.crawlWeb("http://facebook.com");
 		
-		DatabaseManager dm = new DatabaseManager();
-		//dm.insert("test insert1", "test insert 2");
-		//dm.selectAll();
-		//dm.delete();
+		MatrixBuilder mb = new MatrixBuilder();
+		matrix.clear();
+		matrix = mb.build();
+		System.out.println(matrix.toString());
+		
+
 		
 	}
 

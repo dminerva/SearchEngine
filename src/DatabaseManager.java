@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DatabaseManager {
 	private String dbUrl = "jdbc:mysql://localhost/web_crawl_data";
@@ -47,6 +48,50 @@ public class DatabaseManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//get urls cralwed from the database
+	public ArrayList<String> getURLs() {
+		ArrayList<String> results = new ArrayList<String>();
+		
+		try {
+			Statement myStmt = myConn.createStatement();
+			
+			ResultSet myRs = myStmt.executeQuery("SELECT * FROM crawl_results");
+			
+			while(myRs.next()) {
+				if(!results.contains(myRs.getString("url"))) {
+					results.add(myRs.getString("url"));
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return results;
+	}
+	
+	//gets pointing data
+	public ArrayList<String> getPointingData(String url) {
+		ArrayList<String> results = new ArrayList<String>();
+		
+		try {
+			Statement myStmt = myConn.createStatement();
+			
+			ResultSet myRs = myStmt.executeQuery("SELECT * FROM crawl_results WHERE url='" + url + "'");
+			
+			while(myRs.next()) {
+				if(!results.contains(myRs.getString("url"))) {
+					results.add(myRs.getString("points_too"));
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return results;
 	}
 	
 	//select all
