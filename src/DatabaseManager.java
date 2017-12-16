@@ -73,7 +73,7 @@ public class DatabaseManager {
 	}
 	
 	//gets pointing data
-	public ArrayList<String> getPointingData(String url) {
+	public ArrayList<String> getPoints(String url) {
 		ArrayList<String> results = new ArrayList<String>();
 		
 		try {
@@ -90,6 +90,14 @@ public class DatabaseManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return results;
+	}
+	
+	public ArrayList<Data> getData() {
+		ArrayList<Data> results = new ArrayList<Data>();
+
+		
 		
 		return results;
 	}

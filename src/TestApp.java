@@ -43,18 +43,12 @@ public class TestApp {
 		//System.out.println(dm.getURLs().toString());
 		//System.out.println("number of urls: " + dm.getURLs().size());
 		//System.out.println(dm.getPointingData("http://localhost/WebCrawlTest/PageA.html").toString());
+		System.out.println(dm.getData().toString());
 		
 		WebCrawler wc = new WebCrawler();
 		//wc.getPageLinks("http://localhost/WebCrawlTest/PageA.html");
 		//wc.crawlWeb("http://localhost/WebCrawlTest/PageA.html");
 		//wc.crawlWeb("http://facebook.com");
-		
-		MatrixBuilder mb = new MatrixBuilder();
-		matrix.clear();
-		matrix = mb.build();
-		System.out.println(matrix.toString());
-		
-
 		
 	}
 
