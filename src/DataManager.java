@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 
 public class DataManager {
 	private String dbUrl = "jdbc:mysql://localhost/web_crawl_data";
@@ -30,7 +31,7 @@ public class DataManager {
 			
 			myStmt.executeUpdate(sql);
 			
-			System.out.println("insert complete");
+			//System.out.println("insert complete");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -44,8 +45,6 @@ public class DataManager {
 			String sql = "DELETE FROM crawl_results";
 			
 			myStmt.executeUpdate(sql);
-			
-			System.out.println("data deleted");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -117,8 +116,8 @@ public class DataManager {
 		return results;
 	}
 	
-	public ArrayList<ArrayList<Data>> getMatrix(ArrayList<Data> data) {
-		ArrayList<ArrayList<Data>> matrix = new ArrayList<ArrayList<Data>>();
+	public LinkedList<LinkedList<Data>> getMatrix(ArrayList<Data> data) {
+		LinkedList<LinkedList<Data>> matrix = new LinkedList<LinkedList<Data>>();
 		ArrayList<Integer> rowNum = new ArrayList<Integer>();
 		
 		for(int i = 0; i < data.size(); i++) {			
@@ -130,7 +129,7 @@ public class DataManager {
 		Collections.sort(rowNum);
 		
 		for(int j = 0; j < rowNum.size(); j++) {
-			matrix.add(new ArrayList<Data>());
+			matrix.add(new LinkedList<Data>());
 			
 			for(int k = 0; k < data.size(); k++) {
 				if(rowNum.get(j).equals(data.get(k).getRow())) {
