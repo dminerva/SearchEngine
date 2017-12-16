@@ -9,6 +9,7 @@ import org.jsoup.select.Elements;
 public class WebCrawler {
 	private ArrayList<String> URLList = new ArrayList<String>();
 	private ArrayList<String> crawled = new ArrayList<String>();
+	private DatabaseManager dm = new DatabaseManager();
 	
 	WebCrawler() {
 		
@@ -44,7 +45,14 @@ public class WebCrawler {
 		
 		//until no more urls to crawl
 		while(!URLList.isEmpty()) {
+			results.clear();
 			results = this.getPageLinks(URLList.get(0));
+			
+			//insert into database
+			for(int i = 1; i < results.size(); i++) {
+				dm.insert(results.get(0), results.get(i));
+			}
+			
 			crawled.add(URLList.get(0));
 			
 			for(int i = 1; i < results.size(); i++) {

@@ -1,9 +1,9 @@
 import java.io.IOException;
 import java.util.LinkedList;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import java.sql.*;
 
 public class TestApp {
 
@@ -34,11 +34,18 @@ public class TestApp {
 		
 		PageRank pr = new PageRank(matrix, numURL);
 		//System.out.println(pr.calcSMVMultiplication().toString());
-		pr.calcPageRank();
+		//pr.calcPageRank();
 		
 		WebCrawler wc = new WebCrawler();
 		//wc.getPageLinks("http://localhost/WebCrawlTest/PageA.html");
-		wc.crawlWeb("http://localhost/WebCrawlTest/PageA.html");
+		//wc.crawlWeb("http://localhost/WebCrawlTest/PageA.html");
+		//wc.crawlWeb("http://facebook.com");
+		
+		DatabaseManager dm = new DatabaseManager();
+		//dm.insert("test insert1", "test insert 2");
+		//dm.selectAll();
+		//dm.delete();
+		
 	}
 
 }
