@@ -36,14 +36,16 @@ public class TestApp {
 		//System.out.println(pr.calcSMVMultiplication().toString());
 		//pr.calcPageRank();
 		
-		DatabaseManager dm = new DatabaseManager();
+		DataManager dm = new DataManager();
 		//dm.insert("test insert1", "test insert 2");
 		//dm.selectAll();
 		//dm.delete();
 		//System.out.println(dm.getURLs().toString());
 		//System.out.println("number of urls: " + dm.getURLs().size());
 		//System.out.println(dm.getPointingData("http://localhost/WebCrawlTest/PageA.html").toString());
-		System.out.println(dm.getData().toString());
+		System.out.println(dm.getData());
+		//System.out.println(dm.getMatrix(dm.getData()));
+		//dm.getMatrix(dm.getData());
 		
 		WebCrawler wc = new WebCrawler();
 		//wc.getPageLinks("http://localhost/WebCrawlTest/PageA.html");

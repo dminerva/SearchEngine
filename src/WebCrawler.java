@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 public class WebCrawler {
 	private ArrayList<String> URLList = new ArrayList<String>();
 	private ArrayList<String> crawled = new ArrayList<String>();
-	private DatabaseManager dm = new DatabaseManager();
+	private DataManager dm = new DataManager();
 	
 	WebCrawler() {
 		

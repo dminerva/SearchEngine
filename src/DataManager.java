@@ -4,14 +4,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class DatabaseManager {
+public class DataManager {
 	private String dbUrl = "jdbc:mysql://localhost/web_crawl_data";
 	private String user = "root";
 	private String pass = "";
 	private Connection myConn;
 	
-	DatabaseManager() {
+	DataManager() {
 		//get connection
 		try {
 			myConn = DriverManager.getConnection(dbUrl, user, pass);
@@ -96,10 +97,63 @@ public class DatabaseManager {
 	
 	public ArrayList<Data> getData() {
 		ArrayList<Data> results = new ArrayList<Data>();
-
+		ArrayList<String> crawled = getURLs();
 		
+		//where crawled is the url and points are the outgoing links for that url
+		for(int i = 0; i < crawled.size(); i++) {
+			ArrayList<String> points = getPoints(crawled.get(i));
+			double value = 1.0 / points.size();
+			
+			for(int j = 0; j < points.size(); j++) {
+				for(int k = 0; k < crawled.size(); k++) {
+					if(crawled.get(k).equals(points.get(j))) {
+						results.add(new Data(value, k + 1, i + 1));
+					}
+					
+				}
+			}
+		}
 		
 		return results;
+	}
+	
+	public ArrayList<ArrayList<Data>> getMatrix(ArrayList<Data> data) {
+		ArrayList<ArrayList<Data>> matrix = new ArrayList<ArrayList<Data>>();
+		ArrayList<Integer> rowNum = new ArrayList<Integer>();
+		
+		for(int i = 0; i < data.size(); i++) {			
+			if(!rowNum.contains(data.get(i).getRow())) {
+				rowNum.add(data.get(i).getRow());
+			}
+		}
+		
+		Collections.sort(rowNum);
+		
+		for(int j = 0; j < rowNum.size(); j++) {
+			matrix.add(new ArrayList<Data>());
+			
+			for(int k = 0; k < data.size(); k++) {
+				if(rowNum.get(j).equals(data.get(k).getRow())) {
+					matrix.get(j).add(data.get(k));
+				}
+			}
+		}
+		
+		/*for(int j = 0; j < rowNum.size(); j++) {
+			matrix.add(new ArrayList<Data>());
+			
+			for(int k = 0; k < data.size(); k++) {
+				if(rowNum.get(j) == data.get(k).getRow()) {
+					matrix.get(j).add(data.get(k));
+				}
+			}
+		}*/
+		
+		for(int l = 0; l < matrix.size(); l++) {
+			System.out.println(matrix.get(l).toString());
+		}
+		
+		return matrix;
 	}
 	
 	//select all
