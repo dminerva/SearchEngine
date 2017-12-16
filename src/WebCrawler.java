@@ -7,11 +7,14 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class WebCrawler {
+	private ArrayList<String> URLList = new ArrayList<String>();
+	private ArrayList<String> crawled = new ArrayList<String>();
 	
 	WebCrawler() {
 		
 	}
 	
+	//returns an array list where the first elm is the url and the following are the urls it points too
 	public ArrayList<String> getPageLinks(String URL) {
 		ArrayList<String> results = new ArrayList<String>();
 		
@@ -34,29 +37,23 @@ public class WebCrawler {
 	}
 	
 	public void crawlWeb(String URL) {
-		ArrayList<String> URLList = new ArrayList<String>();
-		ArrayList<String> crawled = new ArrayList<String>();
 		ArrayList<String> results = new ArrayList<String>();
 		
+		//load up first url to crawl
 		URLList.add(URL);
 		
-		while(!URLList.isEmpty()) {			
-			if(!crawled.contains(URLList.get(0))) {
-				crawled.add(URLList.get(0));
-				
-				results = this.getPageLinks(URLList.get(0));
-				//System.out.println("results: " + results.toString());
-								
-				//insert into database
-				
-				URLList.remove(0);
-			}
-						
+		//until no more urls to crawl
+		while(!URLList.isEmpty()) {
+			results = this.getPageLinks(URLList.get(0));
+			crawled.add(URLList.get(0));
+			
 			for(int i = 1; i < results.size(); i++) {
-				if(!crawled.contains(results.get(i))) {
+				if(!URLList.contains(results.get(i)) && !crawled.contains(results.get(i))) {
 					URLList.add(results.get(i));
 				}
 			}
+			
+			URLList.remove(0);
 		}
 	}
 }
