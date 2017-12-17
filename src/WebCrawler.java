@@ -55,6 +55,10 @@ public class WebCrawler {
 				dm.insert(results.get(0), results.get(i));
 			}
 			
+			if(results.size() == 1) {
+				dm.insert(results.get(0), "NULL");
+			}
+			
 			crawled.add(URLList.get(0));
 			
 			for(int i = 1; i < results.size(); i++) {

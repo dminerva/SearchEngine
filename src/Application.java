@@ -10,7 +10,6 @@ public class Application {
 		LinkedList<Data> results;
 		
 		dm.delete();
-		//where page F + G is a spider trap and page J is a deadend
 		wc.crawlWeb("http://localhost/WebCrawlTest2/PageA.html");
 		
 		System.out.println("\n");
