@@ -45,7 +45,7 @@ public class WebCrawler {
 		URLList.add(URL);
 		
 		//until no more urls to crawl
-		while(!URLList.isEmpty() && count < 26) {
+		while(!URLList.isEmpty()) {
 			count++;
 			results.clear();
 			results = this.getPageLinks(URLList.get(0));

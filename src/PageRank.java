@@ -5,7 +5,7 @@ public class PageRank {
 	private LinkedList<Data> vector = new LinkedList<Data>();
 	private LinkedList<Data> error = new LinkedList<Data>();
 	private int size;
-	private double epoc = 0.01;
+	private double epoc = 0.05;
 	private double beta = 0.85;
 
 	PageRank(LinkedList<LinkedList<Data>> m, int s) {
@@ -35,7 +35,7 @@ public class PageRank {
 				}
 			}
 			// adjust rank BMR + (1-B)/N
-			//sum = (beta * sum)  + ((1 - beta) / vector.size());			
+			sum = (beta * sum)  + ((1 - beta) / vector.size());			
 			
 			result.add(new Data(sum, i + 1, 1));
 		}

@@ -10,7 +10,7 @@ public class Application {
 		LinkedList<Data> results;
 		
 		dm.delete();
-		wc.crawlWeb("http://localhost/WebCrawlTest2/PageA.html");
+		wc.crawlWeb("http://localhost/WebCrawlTest2/PageI.html");
 		
 		System.out.println("\n");
 		System.out.println("MATRIX");
