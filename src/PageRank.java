@@ -75,7 +75,7 @@ public class PageRank {
 				}
 				
 				for(int j = 0; j < error.size(); j++) {					
-					sum += error.get(j).getValue() / error.size();
+					sum += error.get(j).getValue();
 				}
 				
 				change = sum;
@@ -83,6 +83,10 @@ public class PageRank {
 			previousVector = vector;
 		}
 		
+		return vector;
+	}
+	
+	public LinkedList<Data> getStartVector() {
 		return vector;
 	}
 }

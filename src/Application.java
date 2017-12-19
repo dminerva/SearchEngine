@@ -11,6 +11,7 @@ public class Application {
 		
 		dm.delete();
 		wc.crawlWeb("http://localhost/WebCrawlTest2/PageI.html");
+		//wc.crawlWeb("http://www.facebook.com");
 		
 		System.out.println("\n");
 		System.out.println("MATRIX");
@@ -19,6 +20,10 @@ public class Application {
 		size = dm.getURLs().size();		
 		pr = new PageRank(matrix, size);
 		
+		System.out.println("\n");
+		System.out.println("Starting vector");
+		
+		System.out.println(pr.getStartVector().toString());		
 		
 		System.out.println("\n");
 		System.out.println("CALCULATING RANK");
