@@ -39,14 +39,12 @@ public class WebCrawler {
 	
 	public void crawlWeb(String URL) {
 		ArrayList<String> results = new ArrayList<String>();
-		int count = 0;
 		
 		//load up first url to crawl
 		URLList.add(URL);
 		
 		//until no more urls to crawl
-		while(!URLList.isEmpty() && count < 26) {
-			count++;
+		while(!URLList.isEmpty()) {
 			results.clear();
 			results = this.getPageLinks(URLList.get(0));
 			
