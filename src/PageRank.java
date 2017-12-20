@@ -5,7 +5,7 @@ public class PageRank {
 	private LinkedList<Data> vector = new LinkedList<Data>();
 	private LinkedList<Data> error = new LinkedList<Data>();
 	private int size;
-	private double epoc = 0.05;
+	private double epoc = 0.001;
 	private double beta = 0.85;
 
 	PageRank(LinkedList<LinkedList<Data>> m, int s) {
