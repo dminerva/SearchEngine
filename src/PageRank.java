@@ -61,10 +61,12 @@ public class PageRank {
 	public LinkedList<Data> calcPageRank() {
 		LinkedList<Data> previousVector = new LinkedList<Data>();
 		double change = 1.0;
+		int count = 0;
 		
 		while (epoc < change) {
+			count++;
 			vector = this.calcSMVMultiplication();
-			System.out.println(vector.toString());
+			System.out.println("\nITERATION " + count + "\n" + vector.toString());
 			
 			if(!previousVector.isEmpty()) {
 				double sum = 0.0;

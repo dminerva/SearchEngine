@@ -28,7 +28,7 @@ public class Application {
 		
 		System.out.println(pr.getStartVector().toString());		
 		
-		System.out.println("\n==================== CALCULATING RANK ====================\n");
+		System.out.println("\n==================== CALCULATING RANK ====================");
 		
 		results = pr.calcPageRank();		
 		//System.out.println(dm.getURLs().toString());
@@ -47,7 +47,8 @@ public class Application {
 		
 		for(int j = 0; j < fr.size(); j++) {
 			fr.get(j).setRank(j + 1.0);
-			System.out.println(fr.get(j).toString());
+			//System.out.println(fr.get(j).toString());
+			System.out.println(fr.get(j).getUrl() + " - rank: " + fr.get(j).getRank().intValue());
 		}
 	}
 }
